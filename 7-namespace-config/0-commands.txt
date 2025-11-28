@@ -1,0 +1,75 @@
+ns = (namespace)
+
+---get
+⚡ kubectl get ns  ==>get all namespaces
+⚡ kubectl get all (--all-namespaces or -A)
+⚡ kubectl get all -n kube-system   ==> get all things in specific ns
+kubectl get po -n kube-system   ==>get all pods in specific ns
+kubectl get deploy -n kube-system
+kubectl get rs -n kube-system
+kubectl get svc -n kube-system
+
+
+
+---create (imp)
+⚡ kubectl create ns  test-1 
+ns.yaml--------------(dec)
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: test-2
+ns.yaml--------------
+kubeclt create -f ./ns.yml
+kubectl create -f ./pod.yml -n test-1
+kubectl get po --all-namespaces -l app=nginx
+
+
+
+---which ns
+kubectl config view  or kubectl describe po mypod  ==>to see which namespace we are in
+---change ns
+kubectl config set-context --current --namespace=test-1
+--delete ns
+kubectl delete ns my-namespace
+⚠️kubectl delete pods --all -A
+
+-----------------------------------------------------------------------------------------------
+cg = (configMap)
+k = (kubectl)
+
+---dec
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: configmap
+data:
+  APP: "v1"
+  PORT: "8080"
+  DB_URL: "https://www.google.com"
+APP_PROPERTIES: |
+    server.port=8080
+    server.address=0.0.0.0
+    spring.datasource.url=jdbc:mysql://db:3306/mydb
+    spring.datasource.username=root
+
+k create -f ./configmap
+
+
+---imp
+k create cm cm2 --from-literal="PORT=9090" --from-literal="NAME=harshith"
+(or)
+vim app.env
+APP="HI"
+PORT="9899"
+k create cm cm3 --from-env-file=app.env
+(or)
+vim config-map-data.txt
+Name=Mustafa
+Course=Python
+Duration=60 days
+command to create config map:
+Copy
+kubectl create cm cm-name --from-file=filename
+
+
+

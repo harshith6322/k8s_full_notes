@@ -1,0 +1,48 @@
+---------------------------k8s-----------------------
+
+1.basic k8s
+ 
+  - k8s- arch
+        - cluster
+        - nodes
+        - master,slave
+        - master-> apiserver, kubeController manager, scheduler, etcd
+        - slave-> kubelet, kubeproxy, pods, containerd
+
+  - self-managed-k8s:
+        - KOPS(PROD)
+        - miniKube(local_test)
+        - kind(local_test)
+
+  - cloude-managed-k8s:
+        - aws eks
+        - azure aks
+        - google gke
+
+  - controle-plane:
+        - api server
+        - etcd
+        - kube-controller
+        - kube-scheduler  
+
+  - worker-node:
+        - kubelet
+        - kubeproxy
+        - containerd
+        
+  - kubectl:
+
+  
+
+  - yaml_files:
+        - pods.yaml  
+        - labels & selectors
+        - replicaset (or) replicacontroller
+        - deployment.yaml
+            - hpa
+            - vpa
+            - cluster scaling
+        - namespaces
+        - statefullset & daemonset
+        - 
+

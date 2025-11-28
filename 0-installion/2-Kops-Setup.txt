@@ -1,0 +1,87 @@
+###---main resourses---###
+----kops---
+==> https://kops.sigs.k8s.io/getting_started/install/
+==> https://mustafa-k8s.hashnode.dev/kops-kubernetes-operations-the-ultimate-guide-for-devops-engineers
+
+---kubectl--
+https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
+
+
+#to create a cluster
+curl -Lo kops https://github.com/kubernetes/kops/releases/download/$(curl -s https://api.github.com/repos/kubernetes/kops/releases/latest | grep tag_name | cut -d '"' -f 4)/kops-linux-amd64
+chmod +x kops
+sudo mv kops /usr/local/bin/kops
+kops version
+aws s3 ls
+aws s3 mb s3://mustafa.flm
+aws s3 ls
+export KOPS_STATE_STORE=s3://mustafa77.flm.kops
+kops create cluster --name flm.k8s.local --zones=us-east-1a,us-east-1b --master-count=1 --master-size=c7i-flex.large --master-volume-size=30 --node-count=2 --node-size=t3.micro --node-volume-size=20 --image=ami-0360c520857e3138f
+kops update cluster --name flm.k8s.local --yes --admin
+kubectl get no
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+ll
+chmod +x kubectl 
+mv kubectl /usr/local/bin/
+kubectl version
+kubectl get nodes
+kubectl get node
+kubectl get no
+
+#pod file with labels 
+---
+apiVersion: v1
+kind: Pod
+metadata:
+    name: pod-5
+    labels:
+        env: test
+        app: swiggy
+        client: infosys
+spec:
+    containers:
+        - name: cont-1
+            image: shaikmustafa/dm
+            ports:
+                - containerPort: 80
+
+kubectl create -f pod.yml 
+kubectl get po --show-labels
+kubectl label pod mypod "env=test"
+kubectl label pod mypod course=devops cloud=aws
+kubectl get po -l app=swiggy
+kubectl get po -l env=test
+kubectl get po -l env!=test
+kubectl get po -l 'env in (dev,test)'
+
+
+
+#pod file with nodeSelector 
+---
+apiVersion: v1
+kind: Pod
+metadata:
+    name: pod-5
+    labels:
+        env: test
+        app: swiggy
+        client: infosys
+spec:
+    nodeSelector:
+        node: node1
+    containers:
+        - name: cont-1
+            image: shaikmustafa/dm
+            ports:
+                - containerPort: 80
+
+kubectl get no
+kubectl label node i-0fa30252d69538098 node=node2
+kubectl get no --show-labels
+kubectl get no --show-labels | grep -i "node=node2"
+
+
+#to delete the cluster 
+export KOPS_STATE_STORE=s3://mustafa77.flm.kops
+kops get cluster
+kops delete cluster --name flm.k8s.local --yes

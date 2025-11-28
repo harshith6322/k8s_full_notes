@@ -1,0 +1,41 @@
+
+---------basic--node--commands
+kubectl api-resources
+kubectl api-versions
+kubectl config --
+kubectl version
+kubectl plugins
+
+-----k8s--nodes-pods--commands
+#nodes
+kubectl get nodes , no  --v=8  or -o wide or json or yaml
+kubectl describe nodes <nodename>
+
+#pods
+kubectl run myownpod --image=nginx --port=80 
+kubectl apply -f <podyaml>
+kubectl get pods , po -A=to see all
+kubectl get pods -o wide or json or yaml
+kubectl desscribe pods <podname>
+kubectl logs <podname>
+kubectl delete pod <podname> or --all
+
+#labels && selectors && nodeselector
+ in, notin, =, ==, !=, gt, lt
+
+2 types of label equality based and setbased
+
+k get nodes , pods --show-labels
+k label nodes <nodename> node=mynode
+k label pods <podname> pod=mypod
+kubectl label node <node-name> <label-key>-
+k get node , pods -l app=nginx app2=httpd app3=proxy  (--overwrite)
+k get node , pods -l app!=nginx
+k get nodes, pods 'app in (nginx,httpd)'
+k get nodes, pods 'app notin (nginx,httpd)'
+k delete nodes, pods -l app=nginx
+
+
+
+
+

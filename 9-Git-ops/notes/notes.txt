@@ -1,0 +1,7 @@
+Argo CD Docs
+https://argo-cd.readthedocs.io/en/stable/getting_started/
+
+Argo CD Example Apps
+https://github.com/argoproj/argocd-example-apps
+https://github.com/harshith6322/argocd-example-apps.git
+https://argo-cd.readthedocs.io/en/latest/user-guide/commands/argocd/

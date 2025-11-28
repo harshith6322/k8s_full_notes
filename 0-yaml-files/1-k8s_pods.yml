@@ -1,0 +1,62 @@
+# v2
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod-nginx
+  labels:
+    app: nginx-pod
+    tier: web
+spec:
+  nodeSelector:
+    node: node1
+  containers:
+    - name: nginx-pod
+      image: nginx
+      imagePullPolicy: IfNotPresent
+      ports:
+        - containerPort: 80
+      livenessProbe:
+        httpGet:
+          path: /
+          port: 80
+        initialDelaySeconds: 5
+        periodSeconds: 10
+      resources:
+        requests:
+          cpu: "100m"
+          memory: "128Mi"
+        limits:
+          cpu: "200m"
+          memory: "256Mi"
+
+
+
+
+# | Policy           | What it means                                        |
+# | ---------------- | ---------------------------------------------------- |
+# | **IfNotPresent** | Pull only if image is missing on node                |
+# | **Always**       | Pull the image every time pod starts                 |
+# | **Never**        | Never pull image (image must exist on node manually) |
+
+
+
+
+
+# v1
+# apiVersion: v1
+# kind: Pod
+# metadata:
+#   name: myownpod1
+#   labels:
+#     app: nginxapp
+#     type: proxy-nginx
+#     department: Devops
+# spec:
+#   containers:
+#     -  name: mypod
+#        image: nginx
+#        ports:
+#          - containerPort: 80 
+#          - containerPort: 443
+

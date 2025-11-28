@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-for-myownpod
+spec:
+  selector:
+    app: nginxapp
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+      nodePort: 30080
+  type: NodePort #LoadBalancer cluster
+
+
+
+# nohup kubectl --namespace kubernetes-dashboard port-forward service/kubernetes-dashboard 8000:80 --address=0.0.0.0 > portforward.log 2>&1 &
+
+
+
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: nodeport-service
+#   labels:
+#     name: "service"
+# spec:
+#   selector:
+#     app: nginx
+#   type: NodePort
+#   ports:
+#     - port: 8080
+#       targetPort: 80
+#       nodePort: 30080
+
