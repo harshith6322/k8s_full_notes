@@ -1,5 +1,3 @@
-Here are your **clean, structured, interview-ready Markdown notes** for **ConfigMaps vs Secrets** — rewritten, formatted, and optimized for clarity.
-(You can paste these directly into Notion, GitHub, or your notes.)
 
 ---
 
@@ -331,3 +329,15 @@ They help keep configuration **clean**, **secure**, and **externalized** from ap
 ---
 
 If you want, I can also convert this into a **PowerPoint**, **PDF**, or a **LinkedIn post version**.
+
+
+
+| Feature                     | ConfigMap as Volume | ConfigMap as Env        |
+| --------------------------- | ------------------- | ----------------------- |
+| Passed as files             | ✔ Yes               | ❌ No                    |
+| Passed as env variables     | ❌ No                | ✔ Yes                   |
+| Updates automatically       | ✔ Yes               | ❌ No (requires restart) |
+| Good for config directories | ✔ Yes               | ❌ No                    |
+| Good for simple key-value   | ❌ No                | ✔ Yes                   |
+| Works for large configs     | ✔ Yes               | ❌ No                    |
+| Works for binary files      | ❌ No (use Secret)   | ❌                       |

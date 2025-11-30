@@ -44,5 +44,5 @@
             - cluster scaling
         - namespaces
         - statefullset & daemonset
-        - 
+        - configmaps & secrets
 
