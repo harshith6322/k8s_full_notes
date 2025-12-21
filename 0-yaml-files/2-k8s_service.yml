@@ -3,6 +3,7 @@ kind: Service
 metadata:
   name: service-for-myownpod
 spec:
+  # serviceName: "service"
   selector:
     app: nginxapp
   ports:

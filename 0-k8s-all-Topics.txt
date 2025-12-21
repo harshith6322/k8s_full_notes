@@ -34,7 +34,7 @@
 
   
 
-  - yaml_files:
+  - topics:
         - pods.yaml  
         - labels & selectors
         - replicaset (or) replicacontroller
@@ -42,7 +42,10 @@
             - hpa
             - vpa
             - cluster scaling
-        - namespaces
+        - namespaces & resource and limits
         - statefullset & daemonset
         - configmaps & secrets
+        - gitops argocd
+        - rbac
+        - helm
 
