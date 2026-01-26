@@ -4,6 +4,8 @@ kubectl api-resources
 kubectl api-versions
 kubectl config --
 kubectl version
+kubectl version --client
+
 kubectl plugins
 
 -----k8s--nodes-pods--commands
@@ -19,6 +21,8 @@ kubectl get pods -o wide or json or yaml
 kubectl desscribe pods <podname>
 kubectl logs <podname>
 kubectl delete pod <podname> or --all
+kubectl replace --force -f pod-temp.yml
+
 
 #labels && selectors && nodeselector
  in, notin, =, ==, !=, gt, lt

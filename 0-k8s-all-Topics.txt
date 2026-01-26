@@ -19,6 +19,9 @@
         - azure aks
         - google gke
 
+  - cli-managed
+        - k9s
+
   - controle-plane:
         - api server
         - etcd
@@ -46,6 +49,6 @@
         - statefullset & daemonset
         - configmaps & secrets
         - gitops argocd
-        - rbac
         - helm
+        - rbac
 
